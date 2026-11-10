@@ -912,8 +912,17 @@ p { text-wrap: pretty; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  *, *::before, *::after { animation: none !important; }
+  *:not(.splash):not(.splash *) { transition: none !important; }
+  .splash-tag { transform: none; }
 }
+
+/* calm intro, for devices set to Reduce Motion: no fire, no movement —
+   the phoenix, the name and the button simply fade in, one after another */
+.splash.calm .splash-logo,
+.splash.calm .splash-title-wrap { opacity: 0; }
+.splash.calm.s1 .splash-logo,
+.splash.calm.s2 .splash-title-wrap { opacity: 1; transition: opacity 1.3s ease; }
 
 @media print {
   .site-nav, .skip-link, .splash { display: none !important; }
@@ -1504,7 +1513,7 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
     if (done) return; done = true;
     drawLogo(2); logo.style.transform = 'none';
     title.classList.add('done'); hot.classList.add('done');
-    splash.classList.add('show-tag', 'show-enter');
+    splash.classList.add('s1', 's2', 'show-tag', 'show-enter');
     try { enter.focus({ preventScroll: true }); } catch (e) {}
   }
 
@@ -1525,7 +1534,15 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
 
   function run(img) {
     sizeFx(); prepLogo(img);
-    if (reduce) { finish(); return; }
+    if (reduce) {                       /* Reduce Motion is on: gentle fades instead of the fire */
+      drawLogo(2); title.classList.add('done'); hot.classList.add('done');
+      splash.classList.add('calm');
+      setTimeout(function () { splash.classList.add('s1'); }, 150);
+      setTimeout(function () { splash.classList.add('s2'); }, 1400);
+      setTimeout(function () { splash.classList.add('show-tag'); }, 2500);
+      setTimeout(finish, 3100);
+      return;
+    }
 
     var t0 = performance.now(), lastStep = t0, lastFrame = t0, stepN = 0, tagOn = false, glintDone = false;
     var GLINT_AT = T.logoStart + T.logoDur + 150, GLINT_DUR = 1100;
