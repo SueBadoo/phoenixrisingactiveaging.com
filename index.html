@@ -367,7 +367,7 @@ p { text-wrap: pretty; }
 .content > p,
 .why-block p {
   font-size: 1.05rem;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .content > p.lede { margin-bottom: 24px; }
@@ -400,7 +400,33 @@ p { text-wrap: pretty; }
   margin-bottom: 16px;
 }
 
+.section-head--center { margin-top: 28px; }
+.section-head--flush { margin-top: 0; }
+.section-head--center h2 { text-align: center; text-wrap: balance; }
+
+.content.content--tight { padding-top: 26px; }
+
+/* the question banner: brighter, larger gold lettering */
+.section-head--center { padding-top: 15px; padding-bottom: 15px; }
+.section-head.section-head--center h2 {
+  background: linear-gradient(180deg, #FFF6D6 0%, #FBE29A 40%, #F2C95A 75%, #E2B84A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #F6D876;
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  letter-spacing: 0.08em;
+}
+
 /* ── WHY BLOCK ────────────────────────────────────────────────────────── */
+.why-block p {
+  font-size: clamp(1.12rem, 0.98rem + 0.55vw, 1.25rem);
+  line-height: 1.7;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 7 3 3;
+}
 .why-block p:last-child { margin-bottom: 0; }
 .why-block strong { color: var(--burg); }
 
@@ -681,6 +707,72 @@ p { text-wrap: pretty; }
   transition: color .2s;
 }
 .cta-email:hover { color: var(--gold); }
+
+/* ── DISCOVERY BANNER (end of home) ───────────────────────────────────── */
+.discovery-banner {
+  background: var(--cream);
+  background: var(--metal-bar) top / 100% 2px no-repeat, var(--cream);
+  text-align: center;
+  padding: 38px var(--pad-r) 40px var(--pad-l);
+}
+
+.discovery-title {
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  color: var(--burg);
+  margin-bottom: 8px;
+  text-wrap: balance;
+}
+
+.discovery-banner p {
+  max-width: 34em;
+  margin: 0 auto 20px;
+  font-size: 1.02rem;
+  color: var(--muted);
+}
+
+.discovery-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 26px;
+}
+
+.discovery-actions .cta-phone { margin-bottom: 0; }
+
+.discovery-link {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: var(--burg);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-thickness .2s;
+}
+.discovery-link:hover { text-decoration-thickness: 2px; }
+
+/* the home page ends on the banner, so the footer sits right against it */
+main:has(#tab-home.active) + .site-footer,
+main:has(#tab-method.active) + .site-footer { margin-top: 0; }
+/* method page placeholder note */
+.coming-soon {
+  padding: 40px var(--pad-r) 44px var(--pad-l);
+  text-align: center;
+}
+.coming-soon p {
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2.6vw, 1.55rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--burg);
+}
 
 /* ── FOOTER ───────────────────────────────────────────────────────────── */
 .site-footer {
@@ -987,6 +1079,59 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
 ══════════════════════════════════════════════════════════════════════════ -->
 <div id="tab-home" class="tab-page active">
 
+  <!-- What Active Aging Means -->
+  <div class="section-head section-head--center"><h2>WHAT EXACTLY DOES ACTIVE AGING MEAN?</h2></div>
+  <div class="content content--tight">
+    <div class="why-block">
+      <p>Someone once told me, &ldquo;When you get older, your world gets smaller. You just can&rsquo;t do what you once did, so you have to accept it.&rdquo;</p>
+      <p>My answer to that is no. Not just for myself, but for the Gen Xers and above crowd who want to keep doing the things they love as they get older.</p>
+      <p>Phoenix Rising Active Aging helps adults 50+ build confidence in their bodies, improve their balance and strength, and maintain the ability to do the things that make life interesting. We combine strength, flexibility and balance training with a better understanding of how to use your body more effectively, with less stress on your joints.</p>
+      <p>But PRAA isn&rsquo;t your standard cookie-cutter workout that you&rsquo;ve seen (and not done) a hundred times. It&rsquo;s all about YOU. Together, we&rsquo;ll discover where you are, where you&rsquo;d like to be, and how to get there with a customized program designed specifically for you and your goals. And what you learn doesn&rsquo;t only happen in the training session. You&rsquo;ll discover practical (and fun) ways to apply those principles to everyday activities, so you can put them to work where they matter most: in your own life.</p>
+      <p>We&rsquo;ll work together to keep your world as big as you like &mdash; heck, maybe bigger.</p>
+    </div>
+
+    <!-- Getting Started cards -->
+    <div class="gap-32"></div>
+    <h3 class="sub-head" style="margin-bottom:0;">Getting Started</h3>
+    <div class="gs-grid">
+      <a class="gs-card" href="#method" data-tab="method">
+        <h4>The PRAA Art In Motion Method</h4>
+        <p>Animation + Taijutsu + Biomechanics = PRAA</p>
+      </a>
+      <a class="gs-card" href="#pricing" data-tab="pricing">
+        <h4>Initial Consultation</h4>
+        <p>60–90 minutes all about you: movement assessment, written recap, and your personalized program.</p>
+      </a>
+      <a class="gs-card" href="#programs" data-tab="programs">
+        <h4>Individual &amp; Duet Sessions</h4>
+        <p>Flexible packages for one-on-one or partner training designed to fit your schedule and budget.</p>
+      </a>
+      <a class="gs-card" href="#programs" data-tab="programs">
+        <h4>Workshops &amp; Group Programs</h4>
+        <p>6-week on-site programs for senior centers, retirement communities, and care facilities.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Free discovery call -->
+  <div class="discovery-banner">
+    <h2 class="discovery-title">Start with a Free Discovery Call</h2>
+    <p>20 minutes to talk through your goals and see if Phoenix Rising is the right fit. No commitment required.</p>
+    <div class="discovery-actions">
+      <a class="cta-phone" href="tel:+13238282171">(323) 828-2171</a>
+      <a class="discovery-link" href="#contact" data-tab="contact">All contact details</a>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     THE PRAA ART IN MOTION METHOD (reached from the Getting Started box)
+══════════════════════════════════════════════════════════════════════════ -->
+<div id="tab-method" class="tab-page">
+  <div class="section-divider"></div>
+  <div class="section-head section-head--center section-head--flush"><h2>THE PRAA ART IN MOTION METHOD</h2></div>
   <!-- Pillars -->
   <div class="pillar-strip">
     <div class="pillar-grid">
@@ -1019,39 +1164,8 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
     <div class="equation-text">Animation <span class="op">+</span> Taijutsu <span class="op">+</span> Biomechanics <span class="op">=</span> Phoenix Rising Active Aging</div>
   </div>
 
-  <!-- Section divider -->
-  <div class="section-divider"></div>
-
-  <!-- Why Fall Prevention Matters -->
-  <div class="section-head"><h2>Why Fall Prevention Matters</h2></div>
-  <div class="content">
-    <div class="why-block">
-      <p>Falls are the leading cause of injury among adults 65 and older — yet most are preventable. Phoenix Rising addresses the root causes directly: poor balance, weak core stability, slow reaction time, and diminished body confidence.</p>
-      <p>Our method pairs <strong>NASM-certified fitness science</strong> (the <em>why it works</em>) with <strong>taijutsu-based movement principles</strong> — drawn from martial arts traditions that emphasize precision, flow, and whole-body coordination — (the <em>how</em>). Every session follows a complete arc: gentle mobility work → taijutsu-informed movement drills → adapted strength and balance training → take-home homework tied to real daily activities like rising from a chair or climbing stairs.</p>
-    </div>
-
-    <!-- Getting Started cards -->
-    <div class="gap-32"></div>
-    <h3 class="sub-head" style="margin-bottom:0;">Getting Started</h3>
-    <div class="gs-grid">
-      <a class="gs-card" href="#contact" data-tab="contact">
-        <h4>Complimentary Discovery Call</h4>
-        <p>20 minutes to talk through your goals and see if we're a good fit. No commitment required.</p>
-      </a>
-      <a class="gs-card" href="#pricing" data-tab="pricing">
-        <h4>Initial Consultation</h4>
-        <p>60–90 minutes all about you: movement assessment, written recap, and your personalized program.</p>
-      </a>
-      <a class="gs-card" href="#programs" data-tab="programs">
-        <h4>Individual &amp; Duet Sessions</h4>
-        <p>Flexible packages for one-on-one or partner training designed to fit your schedule and budget.</p>
-      </a>
-      <a class="gs-card" href="#programs" data-tab="programs">
-        <h4>Workshops &amp; Group Programs</h4>
-        <p>6-week on-site programs for senior centers, retirement communities, and care facilities.</p>
-      </a>
-    </div>
-  </div>
+  <!-- placeholder until the method write-up is ready -->
+  <div class="coming-soon"><p>More Details to come</p></div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════════════════
@@ -1269,7 +1383,7 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
 
 <script>
 (function () {
-  var TABS = ['home', 'about', 'programs', 'pricing', 'contact'];
+  var TABS = ['home', 'about', 'programs', 'pricing', 'contact', 'method'];
 
   function showTab(id, opts) {
     if (TABS.indexOf(id) === -1) id = 'home';
