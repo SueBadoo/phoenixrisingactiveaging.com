@@ -406,6 +406,11 @@ p { text-wrap: pretty; }
 
 .content.content--tight { padding-top: 26px; }
 
+/* home page: the text column grows with the window (up to a comfortable limit) */
+@media (min-width: 900px) {
+  #tab-home .content { max-width: min(1100px, 86vw); }
+}
+
 /* the question banner: brighter, larger gold lettering */
 .section-head--center { padding-top: 15px; padding-bottom: 15px; }
 .section-head.section-head--center h2 {
@@ -1086,7 +1091,7 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
       <p>Someone once told me, &ldquo;When you get older, your world gets smaller. You just can&rsquo;t do what you once did, so you have to accept it.&rdquo;</p>
       <p>My answer to that is no. Not just for myself, but for the Gen Xers and above crowd who want to keep doing the things they love as they get older.</p>
       <p>Phoenix Rising Active Aging helps adults 50+ build confidence in their bodies, improve their balance and strength, and maintain the ability to do the things that make life interesting. We combine strength, flexibility and balance training with a better understanding of how to use your body more effectively, with less stress on your joints.</p>
-      <p>But PRAA isn&rsquo;t your standard cookie-cutter workout that you&rsquo;ve seen (and not done) a hundred times. It&rsquo;s all about YOU. Together, we&rsquo;ll discover where you are, where you&rsquo;d like to be, and how to get there with a customized program designed specifically for you and your goals. And what you learn doesn&rsquo;t only happen in the training session. You&rsquo;ll discover practical (and fun) ways to apply those principles to everyday activities, so you can put them to work where they matter most: in your own life.</p>
+      <p>But PRAA isn&rsquo;t your standard cookie-cutter workout that you&rsquo;ve seen (and not done) a hundred times. It&rsquo;s all about YOU. Together, we&rsquo;ll discover where you are, where you&rsquo;d like to be, and how to get there with a customized program designed specifically for you and your goals. And what you learn doesn&rsquo;t stay in the training session. You&rsquo;ll discover practical (and fun) ways to apply those principles to everyday activities, so you can put them to work where they matter most: in your own life.</p>
       <p>We&rsquo;ll work together to keep your world as big as you like &mdash; heck, maybe bigger.</p>
     </div>
 
