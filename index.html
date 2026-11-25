@@ -343,7 +343,7 @@ p { text-wrap: pretty; }
 
 .equation-text {
   font-family: var(--display);
-  font-size: clamp(1rem, 2.3vw, 1.25rem);
+  font-size: clamp(1.1rem, 2.3vw, 1.25rem);
   font-weight: 600;
   color: var(--cream);
   letter-spacing: 0.05em;
@@ -408,7 +408,8 @@ p { text-wrap: pretty; }
 
 /* home page: the text column grows with the window (up to a comfortable limit) */
 @media (min-width: 900px) {
-  #tab-home .content { max-width: min(1100px, 86vw); }
+  #tab-home .content,
+  #tab-method .content { max-width: min(1100px, 86vw); }
 }
 
 /* the question banner: brighter, larger gold lettering */
@@ -422,6 +423,25 @@ p { text-wrap: pretty; }
   font-size: clamp(1.2rem, 2.6vw, 1.5rem);
   letter-spacing: 0.08em;
 }
+
+/* method page: opening line set apart above the text */
+.content > p.lead-line {
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 2.3vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  color: var(--burg);
+  text-align: center;
+  text-wrap: balance;
+  margin: 6px auto 24px;
+}
+
+/* white space between the title banner and the equation banner */
+#tab-method .equation-banner { margin-top: 26px; }
+
+/* never split key terms with a hyphen */
+.nohy { -webkit-hyphens: manual; hyphens: manual; }
 
 /* ── WHY BLOCK ────────────────────────────────────────────────────────── */
 .why-block p {
@@ -805,8 +825,7 @@ p { text-wrap: pretty; }
 .discovery-link:hover { text-decoration-thickness: 2px; }
 
 /* the home page ends on the banner, so the footer sits right against it */
-main:has(#tab-home.active) + .site-footer,
-main:has(#tab-method.active) + .site-footer { margin-top: 0; }
+main:has(#tab-home.active) + .site-footer { margin-top: 0; }
 /* method page placeholder note */
 .coming-soon {
   padding: 40px var(--pad-r) 44px var(--pad-l);
@@ -845,6 +864,9 @@ main:has(#tab-method.active) + .site-footer { margin-top: 0; }
 }
 .discovery-banner .discovery-title + p { max-width: 52em; }
 .discovery-banner .dl { display: block; text-wrap: balance; }
+/* opening line: one line on wide screens, one sentence per line on phones */
+.lead-line .dl { display: inline; }
+@media (max-width: 620px) { .lead-line .dl { display: block; } }
 
 .discovery-link {
   color: var(--cream);
@@ -1051,6 +1073,8 @@ main:has(#tab-method.active) + .site-footer { margin-top: 0; }
   .header-tagline { font-size: 1.02rem; letter-spacing: 0.04em; }
 
   .nav-btn { letter-spacing: 0.05em; }
+  /* six tabs: two even rows of three */
+  .nav-inner { display: grid; grid-template-columns: repeat(3, auto); justify-content: center; }
 
   .content { padding-top: 32px; padding-bottom: 36px; }
 
@@ -1152,6 +1176,7 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
 <nav class="site-nav" aria-label="Main">
   <div class="nav-inner">
     <button class="nav-btn active" data-tab="home" aria-current="page">Home</button>
+    <button class="nav-btn" data-tab="method">The AIM Method</button>
     <button class="nav-btn" data-tab="about">About</button>
     <button class="nav-btn" data-tab="programs">Programs</button>
     <button class="nav-btn" data-tab="pricing">Pricing</button>
@@ -1183,7 +1208,7 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
     <div class="gs-grid">
       <a class="gs-card" href="#method" data-tab="method">
         <h4>The PRAA Art In Motion Method</h4>
-        <p>Animation + Taijutsu + Biomechanics = PRAA</p>
+        <p>Movement Science + Taijutsu + Everyday Application = The PRAA Art In Motion Method</p>
       </a>
       <a class="gs-card" href="#pricing" data-tab="pricing">
         <h4>Initial Consultation</h4>
@@ -1219,40 +1244,53 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
 <div id="tab-method" class="tab-page">
   <div class="section-divider"></div>
   <div class="section-head section-head--center section-head--flush"><h2>THE PRAA ART IN MOTION METHOD</h2></div>
-  <!-- Pillars -->
+  <!-- SAVED, NOT SHOWN: the three AIM pillars (removed Nov 24, 2026; kept for use elsewhere).
   <div class="pillar-strip">
     <div class="pillar-grid">
       <div class="pillar-card">
         <div class="pillar-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5.5V26M10.5 26h11M6.5 9h19"/><path d="M6.5 9 3 17.5a3.6 3.6 0 0 0 7 0L6.5 9ZM25.5 9 22 17.5a3.6 3.6 0 0 0 7 0L25.5 9Z"/><circle cx="16" cy="4.6" r="1.1"/></svg>
-        </div>
-        <div class="pillar-name">Balance &amp; Taijutsu Movement</div>
-        <div class="pillar-body">Posture, stability &amp; spatial awareness through martial arts-informed movement principles — cultivating precision, flow, and body intelligence.</div>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-icon" aria-hidden="true">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 16h11"/><rect x="6.5" y="9" width="4" height="14" rx="1.2"/><rect x="21.5" y="9" width="4" height="14" rx="1.2"/><path d="M3.5 12.5v7M28.5 12.5v7"/></svg>
         </div>
-        <div class="pillar-name">NASM-Based Strength</div>
-        <div class="pillar-body">Evidence-based core conditioning and functional strength to rebuild confidence and reduce fall risk.</div>
+        <div class="pillar-name">Movement Science</div>
+        <div class="pillar-body">Evidence-based strength, balance and mobility training, grounded in NASM corrective exercise science, to rebuild confidence and reduce fall risk.</div>
       </div>
       <div class="pillar-card">
         <div class="pillar-icon" aria-hidden="true">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M22.6 6.2A11.6 11.6 0 1 0 27 12.4" stroke-width="2.3"/><path d="M27 12.4a11.6 11.6 0 0 1 .5 5" stroke-width="1.2"/></svg>
         </div>
-        <div class="pillar-name">Martial Arts Wisdom</div>
-        <div class="pillar-body">Practical awareness and protective movement from Ninpo Ninjutsu — real-world focused.</div>
+        <div class="pillar-name">Taijutsu</div>
+        <div class="pillar-body">Martial arts movement principles of posture, stability and working with gravity, cultivating precision, flow and body intelligence.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 15.5 16 5.5l11.5 10"/><path d="M7.5 13v13.5h17V13"/><path d="M13.5 26.5v-7h5v7"/></svg>
+        </div>
+        <div class="pillar-name">Everyday Application</div>
+        <div class="pillar-body">Homework that puts each session&rsquo;s skill to work in daily life, from lifting the laundry to climbing stairs, until better movement becomes the new norm that you do without even thinking about it.</div>
       </div>
     </div>
   </div>
 
+  end of saved pillars -->
+
   <!-- PRAA Equation Banner -->
   <div class="equation-banner">
-    <div class="equation-text">Animation <span class="op">+</span> Taijutsu <span class="op">+</span> Biomechanics <span class="op">=</span> Phoenix Rising Active Aging</div>
+    <div class="equation-text">Movement Science <span class="op">+</span> Taijutsu <span class="op">+</span> Everyday Application <span class="op">=</span> The PRAA Art In Motion Method</div>
   </div>
 
-  <!-- placeholder until the method write-up is ready -->
-  <div class="coming-soon"><p>More Details to come</p></div>
+  <div class="content content--tight">
+    <p class="lead-line"><span class="dl">It&rsquo;s not just about getting stronger.</span> <span class="dl">It&rsquo;s about learning how to use your body.</span></p>
+    <div class="why-block">
+      <p>The PRAA Art In Motion Method (PRAA AIM) combines modern movement science with the ancient Japanese martial arts principles of <span class="nohy">taijutsu</span> (or &ldquo;body technique&rdquo;) to develop a better awareness and understanding of how your body moves, balances, and responds to the world around you.</p>
+      <p>It&rsquo;s no big secret that strength, flexibility, mobility, and balance are important elements to staying active as you get older. But there&rsquo;s another piece of the equation that isn&rsquo;t as well-known: training your body to move in a way that improves its relationship to gravity, then reinforcing those principles with everyday actions so that your mind recognizes those little shifts and your body makes adjustments more automatically &mdash; sometimes before you&rsquo;ve even realized what&rsquo;s happening.</p>
+      <p>That&rsquo;s where movement awareness and motor learning come in.</p>
+      <p>Now, the principles are universal, but how they&rsquo;re applied is anything but one-size-fits-all. Your starting point, physical abilities, lifestyle, and goals shape a custom-designed approach that&rsquo;s all about you. Before we do one stretch or even look at an exercise ball, I&rsquo;m going to listen to and look at you &mdash; frame by frame &mdash; to create a program that&rsquo;s built around your body, needs, goals and concerns, and designed for you to enjoy it as we go along. In addition to working on the nuts-and-bolts of increasing strength, balance and range of motion, the PRAA AIM Method also helps you gain a new perspective on how to move with gravity instead of fighting against it.</p>
+      <p>In each session you&rsquo;re given a new skill to gain greater awareness of your body as we work through the exercises, but the training doesn&rsquo;t end when the session does. The homework (yes&hellip; there&rsquo;s homework even at our age!) is to practice applying those principles in everyday activities, building awareness of how you&rsquo;re moving: checking your position so that there&rsquo;s less stress on your lower back when lifting a laundry basket up from the floor, adjusting your head and body posture as you go up the stairs so that you&rsquo;re working with gravity to put less stress on your knees, and shifting your upper body position so that gravity helps to lift you out of a chair without sounding like your grandfather.</p>
+      <p>The idea is to reinforce what you&rsquo;ve learned until better movement patterns become increasingly automatic &mdash; so you can spend less time thinking about how to move and more time enjoying what you&rsquo;re doing.</p>
+      <p>In a nutshell: The Art In Motion Method is designed to not only strengthen your body and help you regain your balance, but also to help you keep doing the things you love (and the laundry) without needing an ice pack afterward.</p>
+    </div>
+  </div>
+
 </div>
 
 <!-- ══════════════════════════════════════════════════════════════════════
@@ -1484,6 +1522,7 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
       b.classList.toggle('active', on);
       if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
     });
+    fitLead();
     if (opts.push) {
       try { history.pushState(null, '', id === 'home' ? location.pathname + location.search : '#' + id); } catch (e) {}
     }
@@ -1502,6 +1541,21 @@ if (!location.hash) document.documentElement.classList.add('splash-on');
     e.preventDefault();
     showTab(el.getAttribute('data-tab'), { push: true, scroll: true });
   });
+
+  /* AIM Method opening line: on wide screens, ease the size down just enough
+     to keep it on one line (never below 22px); phones get one sentence per line */
+  function fitLead() {
+    var el = document.querySelector('.lead-line');
+    if (!el) return;
+    el.style.fontSize = ''; el.style.whiteSpace = '';
+    if (window.innerWidth <= 620 || !el.offsetParent) return;
+    var size = parseFloat(getComputedStyle(el).fontSize);
+    el.style.whiteSpace = 'nowrap';
+    while (el.scrollWidth > el.clientWidth + 1 && size > 22) { size -= 0.5; el.style.fontSize = size + 'px'; }
+    if (el.scrollWidth > el.clientWidth + 1) { el.style.fontSize = ''; el.style.whiteSpace = ''; }
+  }
+  window.addEventListener('resize', fitLead);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLead);
 
   function fromHash() { showTab((location.hash || '').replace('#', '') || 'home', {}); }
   window.addEventListener('popstate', fromHash);
